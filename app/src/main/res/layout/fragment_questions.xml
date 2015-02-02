@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/answer_a"
+        android:layout_marginLeft="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="120dp"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/answer_b"
+        android:layout_alignBottom="@id/answer_a"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/answer_c"
+        android:layout_alignTop="@id/answer_a"
+        android:layout_alignLeft="@id/answer_a"
+        android:layout_marginTop="90dp"/>
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:id="@+id/answer_d"
+        android:layout_alignTop="@id/answer_b"
+        android:layout_alignLeft="@id/answer_b"
+        android:layout_marginTop="90dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ici est le texte de la question?"
+        android:id="@+id/text_question"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/answer_b"
+        android:layout_marginTop="50dp"
+        android:layout_alignLeft="@+id/answer_a" />
+
+</RelativeLayout>
