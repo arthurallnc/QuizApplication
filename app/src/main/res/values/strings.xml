@@ -4,5 +4,11 @@
     <string name="app_name">QuizApplication</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string-array name="level_array">
+        <item>Débutant</item>
+        <item>Intermédiaire</item>
+        <item>Expert</item>
+    </string-array>
+
 
 </resources>

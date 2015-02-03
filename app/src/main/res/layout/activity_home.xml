@@ -13,6 +13,14 @@
         android:layout_marginTop="100dp"
         android:textSize="40dp"/>
 
+    <TextView android:text="Niveau de difficulté"
+        android:id="@+id/level_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="24dp"/>
+
     <Button
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
@@ -20,7 +28,16 @@
         android:width="150dp"
         android:height="80dp"
         android:text="Jouer"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/spinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@+id/level_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>
