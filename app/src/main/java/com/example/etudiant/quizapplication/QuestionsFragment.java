@@ -43,12 +43,18 @@ public class QuestionsFragment extends Fragment{
         if(!Arrays.asList(questionsPrecedentes).contains(-1)){
             //
         }
-
-        truth = questions.get(rand).getTruth();
-        score = ((QuestionsActivity) getActivity()).getScore();
         View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);
         final TextView textQuestion = (TextView) myFragmentView.findViewById(R.id.text_question);
         final TextView textScore = (TextView) myFragmentView.findViewById(R.id.score_question);
+        while(questionsPrecedentes[rand]==1){
+            rand = r.nextInt(10);
+
+        }
+
+        truth = questions.get(rand).getTruth();
+        score = ((QuestionsActivity) getActivity()).getScore();
+
+
         final Button answerA = (Button) myFragmentView.findViewById(R.id.answer_a);
         final Button answerB = (Button) myFragmentView.findViewById(R.id.answer_b);
         final Button answerC = (Button) myFragmentView.findViewById(R.id.answer_c);
@@ -60,10 +66,7 @@ public class QuestionsFragment extends Fragment{
         answerC.setText(questions.get(rand).getAnswer_c());
         answerD.setText(questions.get(rand).getAnswer_d());
 
-        while(questionsPrecedentes[rand]==1){
-            rand = r.nextInt(10);
 
-        }
         questionsPrecedentes[rand]=1;
 
         answerA.setOnClickListener(new View.OnClickListener() {

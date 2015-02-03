@@ -13,7 +13,6 @@ import java.util.List;
 public class QuestionsActivity extends FragmentActivity {
 
     private int score = 0;
-    private int tour =0;
     private int[] questionsPrecedentes = new int[50];
 
     @Override
@@ -41,14 +40,6 @@ public class QuestionsActivity extends FragmentActivity {
 
     public void setScore (int score){
         this.score = score;
-    }
-
-    public int getTour(){
-        return tour;
-    }
-
-    public void setTour (int tour){
-        this.tour = tour;
     }
 
     public int[] getQuestionsPrecedentes(){
