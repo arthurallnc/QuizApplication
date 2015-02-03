@@ -7,15 +7,20 @@
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:id="@+id/answer_a"
+        android:textColor="#000000"
+        android:clickable="true"
         android:layout_marginLeft="40dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="150dp"/>
+        android:layout_alignTop="@+id/text_question"
+        android:layout_marginTop="110dp"/>
 
     <Button
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:id="@+id/answer_b"
-        android:layout_alignBottom="@id/answer_a"
+        android:textColor="#000000"
+        android:clickable="true"
+        android:layout_alignBottom="@+id/answer_a"
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"/>
 
@@ -23,16 +28,20 @@
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:id="@+id/answer_c"
-        android:layout_alignTop="@id/answer_a"
-        android:layout_alignLeft="@id/answer_a"
+        android:textColor="#000000"
+        android:clickable="true"
+        android:layout_alignTop="@+id/answer_a"
+        android:layout_alignLeft="@+id/answer_a"
         android:layout_marginTop="90dp"/>
 
     <Button
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:id="@+id/answer_d"
-        android:layout_alignTop="@id/answer_b"
-        android:layout_alignLeft="@id/answer_b"
+        android:textColor="#000000"
+        android:clickable="true"
+        android:layout_alignTop="@+id/answer_b"
+        android:layout_alignLeft="@+id/answer_b"
         android:layout_marginTop="90dp"/>
 
     <TextView
@@ -42,9 +51,20 @@
         android:textStyle="bold"
         android:text="Ici est le texte de la question?"
         android:id="@+id/text_question"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/score_question"
         android:layout_alignRight="@+id/answer_b"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_alignLeft="@+id/answer_a" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:text="Ici est le score"
+        android:id="@+id/score_question"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

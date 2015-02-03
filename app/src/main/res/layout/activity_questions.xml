@@ -10,13 +10,10 @@
         android:layout_marginTop="100dp"
         android:textSize="40dp"/>
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:name="android.support.v4.app.ListFragment"
         android:id="@+id/fragment_questions"
         android:layout_alignParentBottom="true"
-        class="com.example.etudiant.quizapplication.QuestionsFragment" />
-
+        android:layout_height="400dp"/>
 
 </RelativeLayout>

@@ -1,8 +1,12 @@
 package com.example.etudiant.quizapplication;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by etudiant on 02/02/2015.
@@ -18,62 +23,185 @@ import java.util.List;
 public class QuestionsFragment extends Fragment{
 
     private int truth;
+    private int rand;
+    private int score;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyDataBase db = new MyDataBase(getActivity());
-        //db.addQuestions();
+        db.addQuestions();
         List<Question> questions = db.showAllQuestions();
-        truth = questions.get(0).getTruth();
+        Random r = new Random();
+        rand = r.nextInt(5);
+        truth = questions.get(rand).getTruth();
+        score = ((QuestionsActivity) getActivity()).getScore();
         View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);
         final TextView textQuestion = (TextView) myFragmentView.findViewById(R.id.text_question);
+        final TextView textScore = (TextView) myFragmentView.findViewById(R.id.score_question);
         final Button answerA = (Button) myFragmentView.findViewById(R.id.answer_a);
         final Button answerB = (Button) myFragmentView.findViewById(R.id.answer_b);
         final Button answerC = (Button) myFragmentView.findViewById(R.id.answer_c);
         final Button answerD = (Button) myFragmentView.findViewById(R.id.answer_d);
-        textQuestion.setText(questions.get(0).getIntitule());
-        answerA.setText(questions.get(0).getAnswer_a());
-        answerB.setText(questions.get(0).getAnswer_b());
-        answerC.setText(questions.get(0).getAnswer_c());
-        answerD.setText(questions.get(0).getAnswer_d());
+        textScore.setText("score: " + score);
+        textQuestion.setText(questions.get(rand).getIntitule());
+        answerA.setText(questions.get(rand).getAnswer_a());
+        answerB.setText(questions.get(rand).getAnswer_b());
+        answerC.setText(questions.get(rand).getAnswer_c());
+        answerD.setText(questions.get(rand).getAnswer_d());
 
         answerA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(truth == 1){
-                    answerA.setBackgroundColor(Color.GREEN);
+                switch(truth){
+                    case 1:
+                        answerA.setTextColor(Color.GREEN);
+                        ((QuestionsActivity) getActivity()).setScore(score + 1);
+                        break;
+                    case 2:
+                        answerA.setTextColor(Color.RED);
+                        answerB.setTextColor(Color.GREEN);
+                        break;
+                    case 3:
+                        answerA.setTextColor(Color.RED);
+                        answerC.setTextColor(Color.GREEN);
+                        break;
+                    case 4:
+                        answerA.setTextColor(Color.RED);
+                        answerD.setTextColor(Color.GREEN);
+                        break;
                 }
-                else answerA.setBackgroundColor(Color.RED);
+                answerA.setClickable(false);
+                answerB.setClickable(false);
+                answerC.setClickable(false);
+                answerD.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        // Actions to do after 2 seconds
+                        QuestionsFragment fragment = new QuestionsFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                        fragmentTransaction.commit();
+                    }
+                }, 2000);
             }
         });
 
         answerB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(truth == 2){
-                    answerB.setBackgroundColor(Color.GREEN);
+                switch(truth){
+                    case 1:
+                        answerA.setTextColor(Color.GREEN);
+                        answerB.setTextColor(Color.RED);
+                        break;
+                    case 2:
+                        answerB.setTextColor(Color.GREEN);
+                        ((QuestionsActivity) getActivity()).setScore(score + 1);
+                        break;
+                    case 3:
+                        answerB.setTextColor(Color.RED);
+                        answerC.setTextColor(Color.GREEN);
+                        break;
+                    case 4:
+                        answerB.setTextColor(Color.RED);
+                        answerD.setTextColor(Color.GREEN);
+                        break;
                 }
-                else answerB.setBackgroundColor(Color.RED);
+                answerA.setClickable(false);
+                answerB.setClickable(false);
+                answerC.setClickable(false);
+                answerD.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        // Actions to do after 2 seconds
+                        QuestionsFragment fragment = new QuestionsFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                        fragmentTransaction.commit();
+                    }
+                }, 2000);
             }
         });
 
         answerC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(truth == 3){
-                    answerC.setBackgroundColor(Color.GREEN);
+                switch(truth){
+                    case 1:
+                        answerA.setTextColor(Color.GREEN);
+                        answerC.setTextColor(Color.RED);
+                        break;
+                    case 2:
+                        answerB.setTextColor(Color.GREEN);
+                        answerC.setTextColor(Color.RED);
+                        break;
+                    case 3:
+                        answerC.setTextColor(Color.GREEN);
+                        ((QuestionsActivity) getActivity()).setScore(score + 1);
+                        break;
+                    case 4:
+                        answerC.setTextColor(Color.RED);
+                        answerD.setTextColor(Color.GREEN);
+                        break;
                 }
-                else answerC.setBackgroundColor(Color.RED);
+                answerA.setClickable(false);
+                answerB.setClickable(false);
+                answerC.setClickable(false);
+                answerD.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        // Actions to do after 2 seconds
+                        QuestionsFragment fragment = new QuestionsFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                        fragmentTransaction.commit();
+                    }
+                }, 2000);
             }
         });
 
         answerD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(truth == 4){
-                    answerD.setBackgroundColor(Color.GREEN);
+                switch(truth){
+                    case 1:
+                        answerA.setTextColor(Color.GREEN);
+                        answerD.setTextColor(Color.RED);
+                        break;
+                    case 2:
+                        answerB.setTextColor(Color.GREEN);
+                        answerD.setTextColor(Color.RED);
+                        break;
+                    case 3:
+                        answerC.setTextColor(Color.GREEN);
+                        answerD.setTextColor(Color.RED);
+                        break;
+                    case 4:
+                        answerD.setTextColor(Color.GREEN);
+                        ((QuestionsActivity) getActivity()).setScore(score + 1);
+                        break;
                 }
-                else answerD.setBackgroundColor(Color.RED);
+                answerA.setClickable(false);
+                answerB.setClickable(false);
+                answerC.setClickable(false);
+                answerD.setClickable(false);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        // Actions to do after 2 seconds
+                        QuestionsFragment fragment = new QuestionsFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                        fragmentTransaction.commit();
+                    }
+                }, 2000);
             }
         });
         return myFragmentView;
