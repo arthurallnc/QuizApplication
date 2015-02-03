@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:text="Ici est le score"
+        android:id="@+id/score_graph"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"/>
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
         android:layout_height="200dip"
-        android:id="@+id/graph"/>
+        android:id="@+id/graph"
+        android:layout_alignTop="@+id/score_graph"
+        android:layout_marginTop="120dp"/>
 
-</LinearLayout>
+</RelativeLayout>

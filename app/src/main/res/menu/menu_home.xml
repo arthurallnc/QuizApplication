@@ -3,4 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".HomeActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_graph_easy"
+        android:icon="@drawable/graph_nodes"
+        android:title="Graphique débutant"
+        android:orderInCategory="100" app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/action_graph_medium"
+        android:icon="@drawable/graph_nodes"
+        android:title="Graphique intermédiaire"
+        android:orderInCategory="200" app:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/action_graph_hard"
+        android:icon="@drawable/graph_nodes"
+        android:title="Graphique expert"
+        android:orderInCategory="300" app:showAsAction="ifRoom|withText"/>
+
 </menu>
