@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -25,14 +27,23 @@ public class QuestionsFragment extends Fragment{
     private int truth;
     private int rand;
     private int score;
+    private int tour;
+    private int[] questionsPrecedentes;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         MyDataBase db = new MyDataBase(getActivity());
         db.addQuestions();
         List<Question> questions = db.showAllQuestions();
         Random r = new Random();
-        rand = r.nextInt(5);
+        rand = r.nextInt(10);
+        questionsPrecedentes=((QuestionsActivity) getActivity()).getQuestionsPrecedentes();
+        if(!Arrays.asList(questionsPrecedentes).contains(-1)){
+
+        }
+
         truth = questions.get(rand).getTruth();
         score = ((QuestionsActivity) getActivity()).getScore();
         View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);
@@ -49,6 +60,12 @@ public class QuestionsFragment extends Fragment{
         answerC.setText(questions.get(rand).getAnswer_c());
         answerD.setText(questions.get(rand).getAnswer_d());
 
+        while(questionsPrecedentes[rand]==1){
+            rand = r.nextInt(10);
+
+        }
+        questionsPrecedentes[rand]=1;
+
         answerA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +73,7 @@ public class QuestionsFragment extends Fragment{
                     case 1:
                         answerA.setTextColor(Color.GREEN);
                         ((QuestionsActivity) getActivity()).setScore(score + 1);
+
                         break;
                     case 2:
                         answerA.setTextColor(Color.RED);
@@ -74,6 +92,7 @@ public class QuestionsFragment extends Fragment{
                 answerB.setClickable(false);
                 answerC.setClickable(false);
                 answerD.setClickable(false);
+                ((QuestionsActivity) getActivity()).setQuestionsPrecedentes(questionsPrecedentes);
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
