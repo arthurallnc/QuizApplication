@@ -41,7 +41,7 @@ public class QuestionsFragment extends Fragment{
         rand = r.nextInt(10);
         questionsPrecedentes=((QuestionsActivity) getActivity()).getQuestionsPrecedentes();
         if(!Arrays.asList(questionsPrecedentes).contains(-1)){
-
+            //
         }
 
         truth = questions.get(rand).getTruth();
