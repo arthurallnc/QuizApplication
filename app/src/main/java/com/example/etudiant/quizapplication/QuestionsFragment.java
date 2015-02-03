@@ -32,7 +32,7 @@ public class QuestionsFragment extends Fragment{
         db.addQuestions();
         List<Question> questions = db.showAllQuestions();
         Random r = new Random();
-        rand = r.nextInt(10);
+        rand = r.nextInt(5);
         truth = questions.get(rand).getTruth();
         score = ((QuestionsActivity) getActivity()).getScore();
         View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);

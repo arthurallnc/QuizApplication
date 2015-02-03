@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by etudiant on 02/02/2015.
  */
-public class MyDataBase extends SQLiteOpenHelper{
+public class  MyDataBase extends SQLiteOpenHelper{
 
     public static final String TABLE_QUESTIONS = "questions";
     public static final String COLUMN_ID = "id";
