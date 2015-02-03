@@ -58,7 +58,6 @@ public class MyDataBase extends SQLiteOpenHelper{
     }
 
     public List<Question> showAllQuestions() {
-
         List<Question> questions = new LinkedList<Question>();
         String query = "SELECT * FROM " + TABLE_QUESTIONS;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -82,9 +81,9 @@ public class MyDataBase extends SQLiteOpenHelper{
     }
 
     public void addQuestions() {
-
         SQLiteDatabase db = this.getWritableDatabase();
-
+        //db.execSQL("DROP TABLE " + TABLE_QUESTIONS);
+        //db.execSQL(DATABASE_CREATE);
         ContentValues values = new ContentValues();
         values.put(COLUMN_INTITULE, "De quel pays le handball est-il originaire?");
         values.put(COLUMN_ANSWER_A, "France");

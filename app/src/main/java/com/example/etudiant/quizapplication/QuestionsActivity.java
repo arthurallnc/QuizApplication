@@ -14,11 +14,5 @@ public class QuestionsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        MyDataBase db = new MyDataBase(this);
-        //db.addQuestions();
-        List<Question> questions = db.showAllQuestions();
-
-        QuestionsFragment fragment = (QuestionsFragment) getFragmentManager().findFragmentById(R.id.fragment_questions);
-        fragment.setQuestions(questions);
     }
 }

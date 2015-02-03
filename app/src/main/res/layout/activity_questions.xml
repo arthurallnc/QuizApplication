@@ -12,7 +12,7 @@
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:name="android.support.v4.app.ListFragment"
         android:id="@+id/fragment_questions"
         android:layout_alignParentBottom="true"

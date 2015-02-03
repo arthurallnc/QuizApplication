@@ -19,22 +19,20 @@ public class QuestionsFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //System.out.println("Intitule " + questions.get(0).getIntitule());
+        MyDataBase db = new MyDataBase(getActivity());
+        //db.addQuestions();
+        List<Question> questions = db.showAllQuestions();
         View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);
         TextView textQuestion = (TextView) myFragmentView.findViewById(R.id.text_question);
-        //textQuestion.setText(questions.get(0).getIntitule());
-        //Button answerA = (Button) getView().findViewById(R.id.answer_a);
-        //answerA.setText(questions.get(0).getAnswer_a());
-        //Button answerB = (Button) getView().findViewById(R.id.answer_b);
-        //answerB.setText(questions.get(0).getAnswer_b());
-        //Button answerC = (Button) getView().findViewById(R.id.answer_c);
-        //answerC.setText(questions.get(0).getAnswer_c());
-        //Button answerD = (Button) getView().findViewById(R.id.answer_d);
-        //answerD.setText(questions.get(0).getAnswer_d());
+        Button answerA = (Button) myFragmentView.findViewById(R.id.answer_a);
+        Button answerB = (Button) myFragmentView.findViewById(R.id.answer_b);
+        Button answerC = (Button) myFragmentView.findViewById(R.id.answer_c);
+        Button answerD = (Button) myFragmentView.findViewById(R.id.answer_d);
+        textQuestion.setText(questions.get(0).getIntitule());
+        answerA.setText(questions.get(0).getAnswer_a());
+        answerB.setText(questions.get(0).getAnswer_b());
+        answerC.setText(questions.get(0).getAnswer_c());
+        answerD.setText(questions.get(0).getAnswer_d());
         return myFragmentView;
-    }
-
-    public void setQuestions(List<Question> questions){
-        this.questions = questions;
     }
 }
