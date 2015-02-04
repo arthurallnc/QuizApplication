@@ -1,11 +1,14 @@
 package com.example.etudiant.quizapplication;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,22 +39,47 @@ public class GraphActivity extends ActionBarActivity {
         MyDataBase db = new MyDataBase(this);
         List<Score> scores = null;
         TextView textGraph = (TextView) findViewById(R.id.text_graph);
+        Button restartButton = (Button) findViewById(R.id.restart_button);
         GraphView graph = (GraphView) findViewById(R.id.graph_activity);
         switch (level){
             case("Débutant"):
                 textGraph.setText("Evolution à partir du niveau Débutant");
                 textGraph.setTextSize(20);
                 scores = db.showEasyScores();
+                restartButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MyDataBase db = new MyDataBase(getApplicationContext());
+                        db.restartEasyScoreTables();
+                        Toast.makeText(getApplicationContext(), "Scores effacés avec succès", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case("Intermédiaire"):
                 textGraph.setText("Evolution à partir du niveau Intermédiaire");
                 textGraph.setTextSize(18);
                 scores = db.showMediumScores();
+                restartButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MyDataBase db = new MyDataBase(getApplicationContext());
+                        db.restartMediumScoreTables();
+                        Toast.makeText(getApplicationContext(), "Scores effacés avec succès", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case("Expert"):
                 textGraph.setText("Evolution à partir du niveau Expert");
                 textGraph.setTextSize(20);
                 scores = db.showHardScores();
+                restartButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MyDataBase db = new MyDataBase(getApplicationContext());
+                        db.restartHardScoreTables();
+                        Toast.makeText(getApplicationContext(), "Scores effacés avec succès", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
         }
         DataPoint[] dataPoint = new DataPoint[scores.size()];
@@ -59,7 +87,7 @@ public class GraphActivity extends ActionBarActivity {
             dataPoint[i] = new DataPoint(scores.get(i).getId(), scores.get(i).getScore());
         }
         if (scores.size() <= 1){
-            Toast.makeText(getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_SHORT).show();
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoint);
         graph.addSeries(series);
@@ -82,8 +110,6 @@ public class GraphActivity extends ActionBarActivity {
         // Handle presses on the action bar items
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_graph_easy:
                 intent = new Intent(GraphActivity.this, GraphActivity.class);
                 intent.putExtra("LEVEL_KEY", "Débutant");

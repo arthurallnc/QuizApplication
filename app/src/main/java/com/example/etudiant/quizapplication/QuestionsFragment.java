@@ -37,6 +37,7 @@ public class QuestionsFragment extends Fragment{
     private int[] questionsPrecedentes;
     private List<Question> questions;
     private boolean roomLeft = false;
+    private final int NB_QUESTIONS = 20;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class QuestionsFragment extends Fragment{
         }
 
         Random r = new Random();
-        rand = r.nextInt(10);
+        rand = r.nextInt(NB_QUESTIONS);
         questionsPrecedentes = ((QuestionsActivity) getActivity()).getQuestionsPrecedentes();
         for(int i = 0; i < questionsPrecedentes.length; i++){
             if(questionsPrecedentes[i] == -1) roomLeft = true;
@@ -90,11 +91,9 @@ public class QuestionsFragment extends Fragment{
             series.setDrawDataPoints(true);
             series.setDataPointsRadius(10);
             series.setTitle("Scores");
-            //graph.setScaleY(1);
-            //graph.setScaleX(1);
             graph.setTitle("Graphique d'évolution au niveau " + ((QuestionsActivity) getActivity()).getLevel());
             if (scores.size() <= 1){
-                Toast.makeText(getActivity().getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_SHORT).show();
             }
             return myFragmentView;
         }
@@ -105,7 +104,7 @@ public class QuestionsFragment extends Fragment{
             textScore.setText("score: " + score);
 
             while (questionsPrecedentes[rand] == 1){
-                rand = r.nextInt(10);
+                rand = r.nextInt(NB_QUESTIONS);
             }
 
             truth = questions.get(rand).getTruth();
@@ -148,18 +147,18 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                    if (((QuestionsActivity) getActivity()).getTime() > 1) {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
-                                // Actions to do after 2 seconds
+                                // Actions to do after 1 second
                                 QuestionsFragment fragment = new QuestionsFragment();
                                 FragmentManager fragmentManager = getFragmentManager();
                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                                 fragmentTransaction.replace(R.id.fragment_questions, fragment);
                                 fragmentTransaction.commit();
                             }
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             });
@@ -189,7 +188,7 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                    if (((QuestionsActivity) getActivity()).getTime() > 1) {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
@@ -200,7 +199,7 @@ public class QuestionsFragment extends Fragment{
                                 fragmentTransaction.replace(R.id.fragment_questions, fragment);
                                 fragmentTransaction.commit();
                             }
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             });
@@ -230,7 +229,7 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                    if (((QuestionsActivity) getActivity()).getTime() > 1) {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
@@ -241,7 +240,7 @@ public class QuestionsFragment extends Fragment{
                                 fragmentTransaction.replace(R.id.fragment_questions, fragment);
                                 fragmentTransaction.commit();
                             }
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             });
@@ -271,7 +270,7 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                    if (((QuestionsActivity) getActivity()).getTime() > 1) {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
@@ -282,7 +281,7 @@ public class QuestionsFragment extends Fragment{
                                 fragmentTransaction.replace(R.id.fragment_questions, fragment);
                                 fragmentTransaction.commit();
                             }
-                        }, 2000);
+                        }, 1000);
                     }
                 }
             });

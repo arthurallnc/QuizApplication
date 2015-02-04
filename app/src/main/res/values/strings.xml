@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">QuizApplication</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Quiz Games</string>
     <string name="action_settings">Settings</string>
     <string-array name="level_array">
         <item>Débutant</item>

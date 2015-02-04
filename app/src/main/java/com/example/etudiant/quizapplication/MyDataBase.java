@@ -33,7 +33,7 @@ public class  MyDataBase extends SQLiteOpenHelper{
     public static final String COLUMN_SCORE = "score";
 
     private static final String DATABASE_NAME = "questions.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     // Database creation sql statement
     private static final String EASY_QUESTION_DATABASE_CREATE = "create table "
@@ -93,6 +93,9 @@ public class  MyDataBase extends SQLiteOpenHelper{
         database.execSQL(EASY_SCORE_DATABASE_CREATE);
         database.execSQL(MIDDLE_SCORE_DATABASE_CREATE);
         database.execSQL(HARD_SCORE_DATABASE_CREATE);
+        addEasyQuestions(database);
+        addMediumQuestions(database);
+        addHardQuestions(database);
     }
 
     @Override
@@ -107,9 +110,6 @@ public class  MyDataBase extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MEDIUM_SCORES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_HARD_SCORES);
         onCreate(db);
-        addEasyQuestions(db);
-        addMediumQuestions(db);
-        addHardQuestions(db);
     }
 
     public List<Score> showEasyScores() {
@@ -359,6 +359,106 @@ public class  MyDataBase extends SQLiteOpenHelper{
         values.put(COLUMN_TRUTH, 2);
         db.insert(TABLE_EASY_QUESTIONS, null, values);
 
+        //11e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Dans le langage familier, comment appelle-t-on la dent du petit enfant?");
+        values.put(COLUMN_ANSWER_A, "Marmotte");
+        values.put(COLUMN_ANSWER_B, "Menotte");
+        values.put(COLUMN_ANSWER_C, "Quenotte");
+        values.put(COLUMN_ANSWER_D, "Bouillote");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //12e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel peintre, né en 1844, est également appelé « le Douanier »?");
+        values.put(COLUMN_ANSWER_A, "Picasso");
+        values.put(COLUMN_ANSWER_B, "Rousseau");
+        values.put(COLUMN_ANSWER_C, "Degas");
+        values.put(COLUMN_ANSWER_D, "Dali");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //13e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Dans les années 1980, quel groupe musical a chanté le titre \"Shout\"?");
+        values.put(COLUMN_ANSWER_A, "Queen");
+        values.put(COLUMN_ANSWER_B, "U2");
+        values.put(COLUMN_ANSWER_C, "Tears For Fears");
+        values.put(COLUMN_ANSWER_D, "Simple Minds");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //14e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quelle est la seule valeur à la roulette à porter la couleur verte?");
+        values.put(COLUMN_ANSWER_A, "0");
+        values.put(COLUMN_ANSWER_B, "50");
+        values.put(COLUMN_ANSWER_C, "40");
+        values.put(COLUMN_ANSWER_D, "13");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //15e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quelle est la plus petite unité de mémoire utilisable sur un ordinateur?");
+        values.put(COLUMN_ANSWER_A, "Byte");
+        values.put(COLUMN_ANSWER_B, "Mega");
+        values.put(COLUMN_ANSWER_C, "Bit");
+        values.put(COLUMN_ANSWER_D, "Giga");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //16e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel insecte appelle-t-on aussi « la bête à bon dieu »?");
+        values.put(COLUMN_ANSWER_A, "Luciole");
+        values.put(COLUMN_ANSWER_B, "Coccinelle");
+        values.put(COLUMN_ANSWER_C, "Scarabée");
+        values.put(COLUMN_ANSWER_D, "Libellule");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //17e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Qui fut le premier européen à arriver aux Philippines?");
+        values.put(COLUMN_ANSWER_A, "Magellan");
+        values.put(COLUMN_ANSWER_B, "Colomb");
+        values.put(COLUMN_ANSWER_C, "Vasco de Gama");
+        values.put(COLUMN_ANSWER_D, "Mauperthuis");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //18e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Combien de temps dure le mandat du président des États-Unis?");
+        values.put(COLUMN_ANSWER_A, "4 ans");
+        values.put(COLUMN_ANSWER_B, "7 ans");
+        values.put(COLUMN_ANSWER_C, "5 ans");
+        values.put(COLUMN_ANSWER_D, "6 ans");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //19e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Dans quelle ville se trouve la fontaine de Trevi?");
+        values.put(COLUMN_ANSWER_A, "Rome");
+        values.put(COLUMN_ANSWER_B, "Venise");
+        values.put(COLUMN_ANSWER_C, "Barcelone");
+        values.put(COLUMN_ANSWER_D, "Seville");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
+        //20e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel animal est le plus rapide à terre?");
+        values.put(COLUMN_ANSWER_A, "Léopard");
+        values.put(COLUMN_ANSWER_B, "Lynx");
+        values.put(COLUMN_ANSWER_C, "Guépard");
+        values.put(COLUMN_ANSWER_D, "Panthère");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_EASY_QUESTIONS, null, values);
+
     }
 
     public void addMediumQuestions(SQLiteDatabase db) {
@@ -461,6 +561,116 @@ public class  MyDataBase extends SQLiteOpenHelper{
         values.put(COLUMN_ANSWER_C, "Grèbe");
         values.put(COLUMN_ANSWER_D, "Grène");
         values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //11e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Comment appelle-t-on le versant de la montagne non situé au soleil?");
+        values.put(COLUMN_ANSWER_A, "Adret");
+        values.put(COLUMN_ANSWER_B, "Ubac");
+        values.put(COLUMN_ANSWER_C, "Etant");
+        values.put(COLUMN_ANSWER_D, "Ressac");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //12e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Dans quel pays se trouve le circuit automobile de Zandvoort?");
+        values.put(COLUMN_ANSWER_A, "Belgique");
+        values.put(COLUMN_ANSWER_B, "Suisse");
+        values.put(COLUMN_ANSWER_C, "Pays-Bas");
+        values.put(COLUMN_ANSWER_D, "France");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //13e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel roman George Orwell a-t-il écrit en 1948?");
+        values.put(COLUMN_ANSWER_A, "2001");
+        values.put(COLUMN_ANSWER_B, "2010");
+        values.put(COLUMN_ANSWER_C, "1984");
+        values.put(COLUMN_ANSWER_D, "1948");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //14e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "En quoi un nihiliste croit-il?");
+        values.put(COLUMN_ANSWER_A, "La chance");
+        values.put(COLUMN_ANSWER_B, "Tout");
+        values.put(COLUMN_ANSWER_C, "Rien");
+        values.put(COLUMN_ANSWER_D, "Lui-même");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //15e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Avec quel autre animal vit généralement une oie?");
+        values.put(COLUMN_ANSWER_A, "Canard");
+        values.put(COLUMN_ANSWER_B, "Jars");
+        values.put(COLUMN_ANSWER_C, "Cygne");
+        values.put(COLUMN_ANSWER_D, "Poule");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //16e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quelle est la plus grande tortue marine connue à ce jour?");
+        values.put(COLUMN_ANSWER_A, "Franche");
+        values.put(COLUMN_ANSWER_B, "Ninja");
+        values.put(COLUMN_ANSWER_C, "Luth");
+        values.put(COLUMN_ANSWER_D, "Argneuse");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //17e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Avec quoi mesure-t-on la profondeur des océans?");
+        values.put(COLUMN_ANSWER_A, "Sextant");
+        values.put(COLUMN_ANSWER_B, "Sonar");
+        values.put(COLUMN_ANSWER_C, "Radar");
+        values.put(COLUMN_ANSWER_D, "Compteur Geiger");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //18e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "En France, dans quelle ville se trouve l'adresse du père Noël?");
+        values.put(COLUMN_ANSWER_A, "Strasbourg");
+        values.put(COLUMN_ANSWER_B, "Paris");
+        values.put(COLUMN_ANSWER_C, "Libourne");
+        values.put(COLUMN_ANSWER_D, "Narbonne");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //18e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Comment se nomme le plus grand spécimen de chouette?");
+        values.put(COLUMN_ANSWER_A, "Grand compte");
+        values.put(COLUMN_ANSWER_B, "Grand duc");
+        values.put(COLUMN_ANSWER_C, "Grand roi");
+        values.put(COLUMN_ANSWER_D, "Grand prince");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //19e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Sur quelle lettre ne peut-on pas mettre de tréma?");
+        values.put(COLUMN_ANSWER_A, "E");
+        values.put(COLUMN_ANSWER_B, "I");
+        values.put(COLUMN_ANSWER_C, "O");
+        values.put(COLUMN_ANSWER_D, "U");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
+
+        //20e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Que signifie le terme Karaoke en japonais?");
+        values.put(COLUMN_ANSWER_A, "Chanson");
+        values.put(COLUMN_ANSWER_B, "Microphone");
+        values.put(COLUMN_ANSWER_C, "Parole");
+        values.put(COLUMN_ANSWER_D, "Vide");
+        values.put(COLUMN_TRUTH, 4);
         db.insert(TABLE_MEDIUM_QUESTIONS, null, values);
     }
 
@@ -565,6 +775,106 @@ public class  MyDataBase extends SQLiteOpenHelper{
         values.put(COLUMN_ANSWER_D, "Y");
         values.put(COLUMN_TRUTH, 4);
         db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //11e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel est le nom scientifique des gargouillis émis par les intestins?");
+        values.put(COLUMN_ANSWER_A, "Diactèmes");
+        values.put(COLUMN_ANSWER_B, "Flarugymes");
+        values.put(COLUMN_ANSWER_C, "Astimydes");
+        values.put(COLUMN_ANSWER_D, "Borborygmes");
+        values.put(COLUMN_TRUTH, 4);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //12e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "De quel membre de la famille de Nicols Hulot, le M. Hulot de Jacques Tati s'est-il inspiré?");
+        values.put(COLUMN_ANSWER_A, "Père");
+        values.put(COLUMN_ANSWER_B, "Grand-père");
+        values.put(COLUMN_ANSWER_C, "Oncle");
+        values.put(COLUMN_ANSWER_D, "Cousin");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //13e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Combien de personnes sont nécessaires pour lancer une « ola »?");
+        values.put(COLUMN_ANSWER_A, "25");
+        values.put(COLUMN_ANSWER_B, "50");
+        values.put(COLUMN_ANSWER_C, "75");
+        values.put(COLUMN_ANSWER_D, "100");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //14e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "En quelle année, le mois de janvier est-il devenu le premier mois de l'année?");
+        values.put(COLUMN_ANSWER_A, "46 avant JC");
+        values.put(COLUMN_ANSWER_B, "352");
+        values.put(COLUMN_ANSWER_C, "646");
+        values.put(COLUMN_ANSWER_D, "812");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //15e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Les carottes contiennent de la vitamine A utile pour lutter contre quelle maladie?");
+        values.put(COLUMN_ANSWER_A, "Héméralopie");
+        values.put(COLUMN_ANSWER_B, "Bronhumite");
+        values.put(COLUMN_ANSWER_C, "Dépressionnite");
+        values.put(COLUMN_ANSWER_D, "Arthrosopie");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //16e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "A quel élément se rapporte la loi de Godwin?");
+        values.put(COLUMN_ANSWER_A, "Christianisme");
+        values.put(COLUMN_ANSWER_B, "Lettrisme");
+        values.put(COLUMN_ANSWER_C, "Nazisme");
+        values.put(COLUMN_ANSWER_D, "Socialisme");
+        values.put(COLUMN_TRUTH, 3);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //17e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Quel est le diamètre d'un CD?");
+        values.put(COLUMN_ANSWER_A, "11 cm");
+        values.put(COLUMN_ANSWER_B, "12 cm");
+        values.put(COLUMN_ANSWER_C, "13 cm");
+        values.put(COLUMN_ANSWER_D, "14 cm");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //18e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Comment se nomme le père Noël au Danemark?");
+        values.put(COLUMN_ANSWER_A, "Julinisse");
+        values.put(COLUMN_ANSWER_B, "Jouluvana");
+        values.put(COLUMN_ANSWER_C, "Joulupukki");
+        values.put(COLUMN_ANSWER_D, "Jultomte");
+        values.put(COLUMN_TRUTH, 1);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //19e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Combien pèse une fraise tagada Haribo?");
+        values.put(COLUMN_ANSWER_A, "3,39 g");
+        values.put(COLUMN_ANSWER_B, "5,39 g");
+        values.put(COLUMN_ANSWER_C, "7,39 g");
+        values.put(COLUMN_ANSWER_D, "9,39 g");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
+
+        //20e question
+        values = new ContentValues();
+        values.put(COLUMN_INTITULE, "Le prénom de César était?");
+        values.put(COLUMN_ANSWER_A, "Jules");
+        values.put(COLUMN_ANSWER_B, "Caïus");
+        values.put(COLUMN_ANSWER_C, "Ignatius");
+        values.put(COLUMN_ANSWER_D, "Marcellus");
+        values.put(COLUMN_TRUTH, 2);
+        db.insert(TABLE_HARD_QUESTIONS, null, values);
     }
 
     public void createTables(){
@@ -578,14 +888,24 @@ public class  MyDataBase extends SQLiteOpenHelper{
         database.close();
     }
 
-    public void dropTables(){
+    public void restartEasyScoreTables(){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DROP TABLE " + TABLE_EASY_QUESTIONS);
         db.execSQL("DROP TABLE " + TABLE_EASY_SCORES);
-        db.execSQL("DROP TABLE " + TABLE_MEDIUM_QUESTIONS);
+        db.execSQL(EASY_SCORE_DATABASE_CREATE);
+        db.close();
+    }
+
+    public void restartMediumScoreTables(){
+        SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE " + TABLE_MEDIUM_SCORES);
-        db.execSQL("DROP TABLE " + TABLE_HARD_QUESTIONS);
+        db.execSQL(MIDDLE_SCORE_DATABASE_CREATE);
+        db.close();
+    }
+
+    public void restartHardScoreTables(){
+        SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE " + TABLE_HARD_SCORES);
+        db.execSQL(HARD_SCORE_DATABASE_CREATE);
         db.close();
     }
 }

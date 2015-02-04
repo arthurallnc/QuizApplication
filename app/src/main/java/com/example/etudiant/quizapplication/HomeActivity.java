@@ -51,8 +51,6 @@ public class HomeActivity extends ActionBarActivity {
         // Handle presses on the action bar items
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_graph_easy:
                 intent = new Intent(HomeActivity.this, GraphActivity.class);
                 intent.putExtra("LEVEL_KEY", "Débutant");

@@ -21,7 +21,8 @@ import java.util.TimerTask;
 public class QuestionsActivity extends ActionBarActivity {
 
     private int score = 0;
-    private int[] questionsPrecedentes = new int[10];
+    private final int NB_QUESTIONS = 20;
+    private int[] questionsPrecedentes = new int[NB_QUESTIONS];
     private String level;
     private TextView timerText;
     private Timer timer;
@@ -96,8 +97,6 @@ public class QuestionsActivity extends ActionBarActivity {
         // Handle presses on the action bar items
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
             case R.id.action_graph_easy:
                 intent = new Intent(QuestionsActivity.this, GraphActivity.class);
                 intent.putExtra("LEVEL_KEY", "Débutant");
@@ -119,8 +118,7 @@ public class QuestionsActivity extends ActionBarActivity {
     }
 
     public void initializeQuestionsPrecedentes(int[] questionsPrecedentes){
-        int i = 0;
-        for(i = 0;  i < questionsPrecedentes.length ; i++){
+        for(int i = 0;  i < questionsPrecedentes.length ; i++){
             questionsPrecedentes[i] = -1;
         }
     }

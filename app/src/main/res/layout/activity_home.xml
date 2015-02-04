@@ -5,12 +5,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".HomeActivity">
 
-    <TextView android:text="Quiz Test"
+    <TextView android:text="Quiz Games"
         android:id="@+id/quiz_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/quiz_img"
+        android:textStyle="bold"
+        android:textColor="#2BB1D3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:textSize="40dp"/>
 
     <TextView android:text="Niveau de difficulté"
@@ -18,7 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@id/quiz_text"
+        android:layout_marginTop="10dp"
         android:textSize="24dp"/>
 
     <Button
@@ -26,8 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="150dp"
-        android:height="80dp"
-        android:text="Jouer"
+        android:height="60dp"
+        android:text="Commencer"
         android:layout_below="@+id/spinner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"/>
@@ -39,5 +43,14 @@
         android:layout_below="@+id/level_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="190dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/quiz_img"
+        android:src="@drawable/big_quiz_games"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
