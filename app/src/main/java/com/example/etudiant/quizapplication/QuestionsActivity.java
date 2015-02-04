@@ -9,8 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by etudiant on 02/02/2015.
@@ -20,15 +23,14 @@ public class QuestionsActivity extends ActionBarActivity {
     private int score = 0;
     private int[] questionsPrecedentes = new int[10];
     private String level;
+    private TextView timerText;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
         Intent intent = getIntent();
         if(null != intent){
             level = intent.getStringExtra("LEVEL_KEY");
@@ -39,7 +41,47 @@ public class QuestionsActivity extends ActionBarActivity {
         fragmentTransaction.replace(R.id.fragment_questions, new QuestionsFragment());
         fragmentTransaction.commit();
         setContentView(R.layout.activity_questions);
+        timerText = (TextView) findViewById(R.id.timer_question);
 
+        if(timer != null){
+            timer.cancel();
+        }
+        timer = new Timer();
+        timer.schedule(timerTask(), 1000, 1000);
+
+    }
+
+    private TimerTask timerTask(){
+        TimerTask myTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                int currentTime = Integer.parseInt(timerText.getText().toString());
+                if(currentTime > 0) {
+                    final String finalTime = String.valueOf(currentTime - 1);
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            timerText.setText(finalTime);
+                        }
+                    });
+                }
+                else{
+                    timer.cancel();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_questions, new QuestionsFragment());
+                    fragmentTransaction.commit();
+                }
+            }
+        };
+        return myTimerTask;
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        timer.cancel();
     }
 
     @Override
@@ -58,12 +100,18 @@ public class QuestionsActivity extends ActionBarActivity {
                 return true;
             case R.id.action_graph_easy:
                 intent = new Intent(QuestionsActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Débutant");
+                startActivity(intent);
                 return true;
             case R.id.action_graph_medium:
                 intent = new Intent(QuestionsActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Intermédiaire");
+                startActivity(intent);
                 return true;
             case R.id.action_graph_hard:
                 intent = new Intent(QuestionsActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Expert");
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -75,6 +123,10 @@ public class QuestionsActivity extends ActionBarActivity {
         for(i = 0;  i < questionsPrecedentes.length ; i++){
             questionsPrecedentes[i] = -1;
         }
+    }
+
+    public int getTime(){
+        return Integer.parseInt(timerText.getText().toString());
     }
 
     public String getLevel(){

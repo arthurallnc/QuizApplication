@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
@@ -40,16 +41,15 @@ public class QuestionsFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         MyDataBase db = new MyDataBase(getActivity());
-        db.addEasyQuestions();
         switch (((QuestionsActivity) getActivity()).getLevel()){
             case("Débutant"):
                 questions = db.showEasyQuestions();
                 break;
             case("Intermédiaire"):
-                //questions = db.showMediumQuestions();
+                questions = db.showMediumQuestions();
                 break;
             case("Expert"):
-                //questions = db.showHardQuestions();
+                questions = db.showHardQuestions();
                 break;
         }
 
@@ -59,23 +59,43 @@ public class QuestionsFragment extends Fragment{
         for(int i = 0; i < questionsPrecedentes.length; i++){
             if(questionsPrecedentes[i] == -1) roomLeft = true;
         }
-        if(!roomLeft){
+        if(!roomLeft || ((QuestionsActivity) getActivity()).getTime() == 0){
             View myFragmentView = inflater.inflate(R.layout.fragment_graph, container, false);
             final TextView textScoreGraph = (TextView) myFragmentView.findViewById(R.id.score_graph);
             score = ((QuestionsActivity) getActivity()).getScore();
             textScoreGraph.setText("score final: " + score);
             GraphView graph = (GraphView) myFragmentView.findViewById(R.id.graph);
-            db.addEasyScore(new Score(score));
-            List<Score> scores = db.showEasyScores();
+            List<Score> scores = null;
+            switch (((QuestionsActivity) getActivity()).getLevel()){
+                case("Débutant"):
+                    db.addEasyScore(new Score(score));
+                    scores = db.showEasyScores();
+                    break;
+                case("Intermédiaire"):
+                    db.addMediumScore(new Score(score));
+                    scores = db.showMediumScores();
+                    break;
+                case("Expert"):
+                    db.addHardScore(new Score(score));
+                    scores = db.showHardScores();
+                    break;
+            }
+
             DataPoint[] dataPoint = new DataPoint[scores.size()];
             for (int i = 0; i < scores.size(); i++){
                 dataPoint[i] = new DataPoint(scores.get(i).getId(), scores.get(i).getScore());
             }
             LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoint);
             graph.addSeries(series);
-            graph.setScaleY(1);
-            graph.setScaleX(1);
-            graph.setTitle("Graphique d'évolution");
+            series.setDrawDataPoints(true);
+            series.setDataPointsRadius(10);
+            series.setTitle("Scores");
+            //graph.setScaleY(1);
+            //graph.setScaleX(1);
+            graph.setTitle("Graphique d'évolution au niveau " + ((QuestionsActivity) getActivity()).getLevel());
+            if (scores.size() <= 1){
+                Toast.makeText(getActivity().getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_LONG).show();
+            }
             return myFragmentView;
         }
         else {
@@ -128,17 +148,19 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            // Actions to do after 2 seconds
-                            QuestionsFragment fragment = new QuestionsFragment();
-                            FragmentManager fragmentManager = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_questions, fragment);
-                            fragmentTransaction.commit();
-                        }
-                    }, 2000);
+                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // Actions to do after 2 seconds
+                                QuestionsFragment fragment = new QuestionsFragment();
+                                FragmentManager fragmentManager = getFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                                fragmentTransaction.commit();
+                            }
+                        }, 2000);
+                    }
                 }
             });
 
@@ -167,17 +189,19 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            // Actions to do after 2 seconds
-                            QuestionsFragment fragment = new QuestionsFragment();
-                            FragmentManager fragmentManager = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_questions, fragment);
-                            fragmentTransaction.commit();
-                        }
-                    }, 2000);
+                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // Actions to do after 2 seconds
+                                QuestionsFragment fragment = new QuestionsFragment();
+                                FragmentManager fragmentManager = getFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                                fragmentTransaction.commit();
+                            }
+                        }, 2000);
+                    }
                 }
             });
 
@@ -206,17 +230,19 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            // Actions to do after 2 seconds
-                            QuestionsFragment fragment = new QuestionsFragment();
-                            FragmentManager fragmentManager = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_questions, fragment);
-                            fragmentTransaction.commit();
-                        }
-                    }, 2000);
+                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // Actions to do after 2 seconds
+                                QuestionsFragment fragment = new QuestionsFragment();
+                                FragmentManager fragmentManager = getFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                                fragmentTransaction.commit();
+                            }
+                        }, 2000);
+                    }
                 }
             });
 
@@ -245,17 +271,19 @@ public class QuestionsFragment extends Fragment{
                     answerB.setClickable(false);
                     answerC.setClickable(false);
                     answerD.setClickable(false);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
-                            // Actions to do after 2 seconds
-                            QuestionsFragment fragment = new QuestionsFragment();
-                            FragmentManager fragmentManager = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_questions, fragment);
-                            fragmentTransaction.commit();
-                        }
-                    }, 2000);
+                    if (((QuestionsActivity) getActivity()).getTime() > 2) {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                // Actions to do after 2 seconds
+                                QuestionsFragment fragment = new QuestionsFragment();
+                                FragmentManager fragmentManager = getFragmentManager();
+                                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                fragmentTransaction.replace(R.id.fragment_questions, fragment);
+                                fragmentTransaction.commit();
+                            }
+                        }, 2000);
+                    }
                 }
             });
             return myFragmentView;

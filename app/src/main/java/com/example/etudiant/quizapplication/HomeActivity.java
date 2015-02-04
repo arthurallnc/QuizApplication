@@ -14,12 +14,13 @@ import android.widget.Spinner;
 
 public class HomeActivity extends ActionBarActivity {
 
+    private Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.level_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -54,12 +55,18 @@ public class HomeActivity extends ActionBarActivity {
                 return true;
             case R.id.action_graph_easy:
                 intent = new Intent(HomeActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Débutant");
+                startActivity(intent);
                 return true;
             case R.id.action_graph_medium:
                 intent = new Intent(HomeActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Intermédiaire");
+                startActivity(intent);
                 return true;
             case R.id.action_graph_hard:
                 intent = new Intent(HomeActivity.this, GraphActivity.class);
+                intent.putExtra("LEVEL_KEY", "Expert");
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

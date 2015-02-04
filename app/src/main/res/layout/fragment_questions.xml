@@ -53,7 +53,7 @@
         android:id="@+id/text_question"
         android:layout_alignTop="@+id/score_question"
         android:layout_alignRight="@+id/answer_b"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_alignLeft="@+id/answer_a" />
 
     <TextView
