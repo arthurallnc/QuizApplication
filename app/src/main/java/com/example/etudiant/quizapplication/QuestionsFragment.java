@@ -93,7 +93,7 @@ public class QuestionsFragment extends Fragment{
             series.setTitle("Scores");
             graph.setTitle("Graphique d'évolution au niveau " + ((QuestionsActivity) getActivity()).getLevel());
             if (scores.size() <= 1){
-                Toast.makeText(getActivity().getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Graphique non disponible\n Au moins 2 tentatives nécessaires pour afficher les scores", Toast.LENGTH_SHORT).show();
             }
             return myFragmentView;
         }

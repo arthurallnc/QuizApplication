@@ -17,20 +17,20 @@ import java.util.List;
  */
 public class  MyDataBase extends SQLiteOpenHelper{
 
-    public static final String TABLE_EASY_QUESTIONS = "easy_questions";
-    public static final String TABLE_MEDIUM_QUESTIONS = "middle_questions";
-    public static final String TABLE_HARD_QUESTIONS = "hard_questions";
-    public static final String TABLE_EASY_SCORES = "easy_scores";
-    public static final String TABLE_MEDIUM_SCORES = "middle_scores";
-    public static final String TABLE_HARD_SCORES = "hard_scores";
-    public static final String COLUMN_ID = "id";
-    public static final String COLUMN_INTITULE = "intitule";
-    public static final String COLUMN_ANSWER_A = "answer_a";
-    public static final String COLUMN_ANSWER_B = "answer_b";
-    public static final String COLUMN_ANSWER_C = "answer_c";
-    public static final String COLUMN_ANSWER_D = "answer_d";
-    public static final String COLUMN_TRUTH = "truth";
-    public static final String COLUMN_SCORE = "score";
+    private static final String TABLE_EASY_QUESTIONS = "easy_questions";
+    private static final String TABLE_MEDIUM_QUESTIONS = "middle_questions";
+    private static final String TABLE_HARD_QUESTIONS = "hard_questions";
+    private static final String TABLE_EASY_SCORES = "easy_scores";
+    private static final String TABLE_MEDIUM_SCORES = "middle_scores";
+    private static final String TABLE_HARD_SCORES = "hard_scores";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_INTITULE = "intitule";
+    private static final String COLUMN_ANSWER_A = "answer_a";
+    private static final String COLUMN_ANSWER_B = "answer_b";
+    private static final String COLUMN_ANSWER_C = "answer_c";
+    private static final String COLUMN_ANSWER_D = "answer_d";
+    private static final String COLUMN_TRUTH = "truth";
+    private static final String COLUMN_SCORE = "score";
 
     private static final String DATABASE_NAME = "questions.db";
     private static final int DATABASE_VERSION = 6;

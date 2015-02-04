@@ -87,7 +87,7 @@ public class GraphActivity extends ActionBarActivity {
             dataPoint[i] = new DataPoint(scores.get(i).getId(), scores.get(i).getScore());
         }
         if (scores.size() <= 1){
-            Toast.makeText(getApplicationContext(), "Graphique non disponible pour le moment", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Graphique non disponible\n Au moins 2 tentatives nécessaires pour afficher les scores", Toast.LENGTH_SHORT).show();
         }
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoint);
         graph.addSeries(series);
