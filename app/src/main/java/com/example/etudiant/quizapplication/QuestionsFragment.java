@@ -64,7 +64,7 @@ public class QuestionsFragment extends Fragment{
             View myFragmentView = inflater.inflate(R.layout.fragment_graph, container, false);
             final TextView textScoreGraph = (TextView) myFragmentView.findViewById(R.id.score_graph);
             score = ((QuestionsActivity) getActivity()).getScore();
-            textScoreGraph.setText("score final: " + score);
+            textScoreGraph.setText("Score final : " + score);
             GraphView graph = (GraphView) myFragmentView.findViewById(R.id.graph);
             List<Score> scores = null;
             switch (((QuestionsActivity) getActivity()).getLevel()){
@@ -101,7 +101,7 @@ public class QuestionsFragment extends Fragment{
             View myFragmentView = inflater.inflate(R.layout.fragment_questions, container, false);
             final TextView textScore = (TextView) myFragmentView.findViewById(R.id.score_question);
             score = ((QuestionsActivity) getActivity()).getScore();
-            textScore.setText("score: " + score);
+            textScore.setText("Score : " + score);
 
             while (questionsPrecedentes[rand] == 1){
                 rand = r.nextInt(NB_QUESTIONS);

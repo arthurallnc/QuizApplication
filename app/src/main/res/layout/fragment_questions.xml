@@ -63,6 +63,7 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:text="Ici est le score"
+        android:textColor="#2BB1D3"
         android:id="@+id/score_question"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"/>

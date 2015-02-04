@@ -10,6 +10,8 @@
         android:id="@+id/text_graph"
         android:layout_marginTop="80dp"
         android:textSize="20dp"
+        android:textColor="#2BB1D3"
+        android:textStyle="bold"
         android:text="Evolution à partir du niveau Débutant"/>
 
     <com.jjoe64.graphview.GraphView
